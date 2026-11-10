@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asesorías académicas | Ciencias Físico Matemáticas y Químico Biológicas</title>
+<style>
+:root{--bg:#070816;--ink:#f1f3ff;--mut:#a6aad0;--glass:rgba(255,255,255,.055);--gb:rgba(255,255,255,.13);--vio:#8b5cf6;--cy:#22d3ee;--pink:#f472b6;--gold:#fbbf24;--ac:#22d3ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blobs i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;animation:fl 18s ease-in-out infinite alternate}
+.blobs i:nth-child(1){width:420px;height:420px;background:var(--vio);left:-100px;top:-80px}
+.blobs i:nth-child(2){width:380px;height:380px;background:var(--cy);right:-120px;top:25%;animation-delay:-6s}
+.blobs i:nth-child(3){width:340px;height:340px;background:var(--pink);left:25%;bottom:-140px;animation-delay:-12s}
+@keyframes fl{to{transform:translate(50px,-40px) scale(1.18)}}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:1040px;margin:auto;padding:0 20px}
+.serif{font-family:Georgia,"Times New Roman",serif}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.logo b{background:linear-gradient(90deg,var(--vio),var(--cy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{padding:34px 0 24px;text-align:center}
+.chip{display:inline-block;background:var(--glass);border:1px solid var(--gb);border-radius:999px;padding:6px 16px;font-size:.88rem;font-weight:600;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:800;line-height:1.02;letter-spacing:-.035em;margin:.35em 0}
+.grad{background:linear-gradient(90deg,var(--vio),var(--cy),var(--pink),var(--vio));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gs 7s linear infinite}
+@keyframes gs{to{background-position:250% 0}}
+.hero p{color:var(--mut);font-size:1.15rem;max-width:620px;margin:.4em auto 1.5em}
+.eq{font-family:Georgia,serif;color:var(--cy);opacity:.8;font-size:.95rem;letter-spacing:.06em}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--vio),var(--cy));color:#fff;border:0;border-radius:999px;padding:13px 26px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer;box-shadow:0 8px 28px rgba(139,92,246,.45);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 12px 34px rgba(34,211,238,.45)}
+.btn.ghost{background:var(--glass);border:1px solid var(--gb);box-shadow:none;backdrop-filter:blur(10px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px 0}
+.stat,.card{background:var(--glass);border:1px solid var(--gb);border-radius:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.stat{padding:18px;text-align:center}
+.stat b{display:block;font-size:2.1rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--mut);font-size:.9rem}
+h2{font-size:1.9rem;font-weight:800;letter-spacing:-.025em;margin:1.6em 0 .6em}
+.sub{color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{padding:22px}
+.areas{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.subj{all:unset;box-sizing:border-box;cursor:pointer;display:block;position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--gb);border-radius:24px;padding:22px;backdrop-filter:blur(14px);transition:transform .2s,border-color .2s,box-shadow .2s}
+.subj::before{content:attr(data-sym);position:absolute;right:-4px;top:-20px;font-family:Georgia,serif;font-size:6.5rem;color:var(--c);opacity:.14}
+.subj::after{content:"";position:absolute;inset:auto -30% -60% -30%;height:70%;background:radial-gradient(closest-side,var(--c),transparent);opacity:.18;transition:opacity .2s}
+.subj:hover,.subj:focus-visible{transform:translateY(-6px) rotate(-.8deg);border-color:var(--c);box-shadow:0 14px 36px color-mix(in srgb,var(--c) 38%,transparent)}
+.subj:hover::after{opacity:.4}
+.subj .ico{font-size:1.7rem;width:54px;height:54px;border-radius:18px;display:grid;place-items:center;margin-bottom:14px;background:color-mix(in srgb,var(--c) 22%,transparent);border:1px solid color-mix(in srgb,var(--c) 60%,transparent)}
+.subj b{font-size:1.3rem;font-weight:800;display:block;letter-spacing:-.01em;position:relative}
+.subj span{color:var(--mut);font-size:.93rem;position:relative}
+.subj i{display:block;margin-top:14px;font-style:normal;color:var(--c);font-weight:700;font-size:.9rem;position:relative}
+.tag{display:inline-block;background:color-mix(in srgb,var(--c) 16%,transparent);border:1px solid color-mix(in srgb,var(--c) 55%,transparent);color:var(--c);border-radius:999px;padding:3px 13px;font-size:.82rem;font-weight:700;margin:2px 4px 2px 0;text-decoration:none}
+select{font:inherit;padding:12px 16px;border-radius:999px;background:var(--glass);color:var(--ink);border:1px solid var(--gb);width:100%;max-width:340px}
+select option{color:#111}
+.hide{display:none}
+.back{all:unset;cursor:pointer;color:var(--cy);font-weight:700;display:inline-block;margin-top:10px}
+.go{cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .25s}
+.go:hover,.go:focus-visible{border-color:var(--cy);box-shadow:0 12px 32px rgba(34,211,238,.28);outline:none}
+.avatar{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.2rem;background:linear-gradient(135deg,var(--vio),var(--pink));margin-bottom:10px;box-shadow:0 0 0 3px rgba(255,255,255,.12),0 0 24px rgba(139,92,246,.55)}
+.price{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:var(--ac)}
+.marq{overflow:hidden;margin:36px -20px;padding:12px 0;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq div{display:inline-block;animation:m 45s linear infinite}
+.marq span{display:inline-block;background:var(--glass);border:1px solid var(--gb);border-radius:999px;padding:6px 16px;margin:0 6px;font-family:Georgia,serif;color:var(--mut)}
+@keyframes m{to{transform:translateX(-50%)}}
+.rv{transition:opacity .6s,transform .25s,border-color .2s,box-shadow .2s}
+.rv:not(.on){opacity:0;transform:translateY(22px)}
+ul{padding-left:20px}a{color:var(--cy)}
+footer{position:relative;z-index:1;padding:40px 20px;text-align:center;color:var(--mut);font-size:.9rem;margin-top:40px}
+@media (prefers-reduced-motion:reduce){.marq div,.grad,.blobs i{animation:none}.rv:not(.on){opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="blobs"><i></i><i></i><i></i></div>
+<canvas id="fx"></canvas>
+<div class="wrap">
+  <nav><span class="logo"><b>∑</b> Asesorías</span><a class="btn ghost" style="padding:8px 18px" href="#materias">Áreas</a></nav>
+
+  <!-- VISTA 1: inicio -->
+  <section id="vista-inicio">
+    <div class="hero">
+      <span class="chip">✨ Asesorías en línea y presenciales</span>
+      <h1>Entiende de verdad.<br><span class="grad">Sube de nivel.</span></h1>
+      <p>Ciencias Físico Matemáticas y Ciencias Químico Biológicas con asesores de nivel olímpico. Elige tu área y entra al perfil de tu asesor.</p>
+      <a class="btn" href="#materias">Elegir mi área 🚀</a>
+      <div class="eq" style="margin-top:22px">e<sup>iπ</sup> + 1 = 0 &nbsp;·&nbsp; E = mc² &nbsp;·&nbsp; ΔG = ΔH − TΔS</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>+400</b><span>horas impartidas</span></div>
+      <div class="stat"><b>3+</b><span>años de experiencia</span></div>
+      <div class="stat"><b>2</b><span>áreas de ciencias</span></div>
+      <div class="stat"><b>OMM · TMF</b><span>preparación de olimpiadas</span></div>
+    </div>
+    <h2 id="materias">Elige tu área</h2>
+    <div class="grid areas" id="lista-materias"></div>
+    <p style="margin-top:18px"><select id="selector" aria-label="Área"><option value="">O elige desde la lista…</option></select></p>
+    <div class="marq"><div id="marq"></div></div>
+    <h2>Nuestros asesores</h2>
+    <div class="grid" id="asesores"></div>
+  </section>
+
+  <!-- VISTA 2: materia / perfil -->
+  <section id="vista-materia" class="hide"></section>
+</div>
+<footer>Reservas y dudas por WhatsApp · Asesorías académicas</footer>
+
+<script>
+/* ============ EDITA AQUÍ ============
+   Cada materia apunta a uno o más asesores (por id).
+   Para agregar un asesor: copia un bloque dentro de ASESORES. */
+const WA = "5255 1030 7462".replace(/\s/g,"");
+const MATERIAS = {
+  fisicomat:{nombre:"Ciencias Físico Matemáticas", sym:"∫", ico:"⚛️", c:"#22d3ee", desc:"Matemáticas y Física: álgebra, cálculo, mecánica, electromagnetismo y olimpiadas.", asesores:["alejandro"]},
+  quimbio:  {nombre:"Ciencias Químico Biológicas", sym:"⌬", ico:"🧬", c:"#4ade80", desc:"Química y Biología: reacciones, estequiometría, célula, genética y fisiología.", asesores:["isabella"]}
+};
+const ASESORES = {
+  isabella:{
+    nombre:"Isabella Borges",
+    rol:"Asesora de Química y Biología",
+    wa:"525513549043",
+    url:"https://bella1718.github.io/Asesorias-quimica/", /* si hay url, la materia redirige a su página */
+    bio:"", modalidad:"", asesorias:[], material:[]
+  },
+  alejandro:{
+    nombre:"Alejandro Izazaga",
+    url:"https://alejandro-izazaga.github.io/asesorias-izazaga/",
+    rol:"Estudiante de Física y Matemáticas (Ing. Nuclear), ESFM-IPN",
+    bio:"Más de tres años de acompañamiento académico. Entrena estudiantes para la Olimpiada Mexicana de Matemáticas y el Torneo Mexicano de Física; fundó el Concurso Interescolar de Matemáticas «Gregori Perelman».",
+    modalidad:"En línea (Teams) y presencial en Azcapotzalco, CDMX",
+    asesorias:[
+      {titulo:"Asesoría individual", detalle:"Secundaria, bachillerato, universidad o examen de ingreso.", precio:"$175 MXN / hora"},
+      {titulo:"Paquetes de horas", detalle:"A más horas, menor precio por hora.", precio:"desde $150 MXN / hora"}
+    ],
+    material:[
+      {titulo:"Cuadernos de trabajo y problemarios (LaTeX)", url:"#"},
+      {titulo:"Recursos de concursos y olimpiadas", url:"recursos.html"}
+    ]
+  }
+};
+/* ================================= */
+
+const $ = id => document.getElementById(id);
+const wa = (txt,n=WA) => `https://wa.me/${n}?text=${encodeURIComponent(txt)}`;
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ini = n => n.split(" ").slice(0,2).map(w=>w[0]).join("");
+
+function inicio(){
+  $("lista-materias").innerHTML = Object.entries(MATERIAS).map(([k,m])=>
+    `<button class="subj" data-m="${k}" data-sym="${m.sym}" style="--c:${m.c}"><div class="ico">${m.ico}</div><b>${m.nombre}</b><span>${m.desc}</span><i>Ver asesor y asesorías →</i></button>`).join("");
+  $("selector").innerHTML += Object.entries(MATERIAS).map(([k,m])=>`<option value="${k}">${m.nombre}</option>`).join("");
+  $("asesores").innerHTML = Object.entries(ASESORES).map(([id,a])=>{
+    const ms = Object.entries(MATERIAS).filter(([,m])=>m.asesores.includes(id));
+    return `<div class="card go" role="link" tabindex="0" data-id="${id}"><div class="avatar">${esc(ini(a.nombre))}</div><h3 class="serif" style="margin:0">${esc(a.nombre)}</h3><p class="sub" style="margin:.3em 0 .6em">${esc(a.rol)}</p>${
+      ms.map(([k,m])=>`<a class="tag" style="--c:${m.c}" href="#/${k}">${m.nombre}</a>`).join("")}</div>`;
+  }).join("");
+  const f = ["∫ f(x)dx","F = ma","PV = nRT","ATP → ADP + Pᵢ","∇·E = ρ/ε₀","C₆H₁₂O₆","lim x→∞","ΔG = ΔH − TΔS","a² + b² = c²","DNA → RNA → proteína","iħ ∂ψ/∂t = Ĥψ","pH = −log[H⁺]"];
+  $("marq").innerHTML = (f.map(t=>`<span>${t}</span>`).join("")).repeat(2);
+  document.querySelectorAll(".subj").forEach(b=>b.onclick=()=>{location.hash="#/"+b.dataset.m});
+  document.querySelectorAll(".go").forEach(c=>{
+    const ir=()=>{const id=c.dataset.id,a=ASESORES[id];
+      if(a.url){location.href=a.url;return}
+      const k=Object.keys(MATERIAS).find(k=>MATERIAS[k].asesores.includes(id));
+      if(k)location.hash="#/"+k};
+    c.onclick=ir;
+    c.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();ir()}};
+  });
+  $("selector").onchange=e=>{if(e.target.value)location.hash="#/"+e.target.value};
+}
+
+function materia(k){
+  const m = MATERIAS[k], v = $("vista-materia");
+  let html = `<div style="--ac:${m.c}"><button class="back" onclick="location.hash=''">← Todas las áreas</button><h2 style="margin-top:.6em"><span style="color:${m.c}">${m.ico}</span> ${m.nombre}</h2>`;
+  if(!m.asesores.length){
+    html += `<div class="card">Aún no hay asesor asignado en esta materia. <a href="${wa("Hola, me interesa una asesoría de "+m.nombre+".")}">Avísanos por WhatsApp</a>.</div>`;
+  }
+  m.asesores.forEach(id=>{
+    const a = ASESORES[id];
+    html += `<div class="card"><div class="avatar">${esc(ini(a.nombre))}</div><h3 class="serif" style="margin:0">${esc(a.nombre)}</h3><p class="sub">${esc(a.rol)}</p>
+      <p>${esc(a.bio)}</p><p><b>Modalidad:</b> ${esc(a.modalidad)}</p></div>
+      <h2>Asesorías de ${m.nombre}</h2><div class="grid">${a.asesorias.map(s=>
+        `<div class="card"><h3 class="serif" style="margin-top:0">${esc(s.titulo)}</h3><p class="sub">${esc(s.detalle)}</p><p class="price">${esc(s.precio)}</p>
+        <a class="btn" href="${wa("Hola "+a.nombre+", quiero reservar: "+s.titulo+" de "+m.nombre+".",a.wa||WA)}">Reservar por WhatsApp</a></div>`).join("")}</div>
+      <h2>Material de asesoramiento</h2><div class="card"><ul>${a.material.map(x=>`<li><a href="${esc(x.url)}">${esc(x.titulo)}</a></li>`).join("")}</ul></div>`;
+  });
+  v.innerHTML = html+"</div>";
+}
+
+function ruta(){
+  const k = location.hash.replace(/^#\/?/,"");
+  const enMateria = k && MATERIAS[k];
+  if(enMateria){
+    const ext = MATERIAS[k].asesores.map(id=>ASESORES[id]).find(a=>a.url);
+    if(ext){location.replace(ext.url);return}
+  }
+  $("vista-inicio").classList.toggle("hide", !!enMateria);
+  $("vista-materia").classList.toggle("hide", !enMateria);
+  if(enMateria){materia(k)}else{$("selector").value=""}
+  if(k!=="materias")window.scrollTo(0,0);
+}
+inicio();
+window.addEventListener("hashchange",ruta);
+ruta();
+document.querySelectorAll(".stat,.subj,#asesores .card,h2").forEach(e=>e.classList.add("rv"));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+setTimeout(()=>document.querySelectorAll(".rv").forEach(e=>e.classList.add("on")),2500); /* respaldo */
+
+/* Fondo animado: red de partículas + símbolos científicos */
+(function(){
+  const c=$("fx"),x=c.getContext("2d");let W,H,P=[];
+  const S=["∑","∫","π","Ψ","∇","λ","Δ","∞","⌬","θ","ħ","√"];
+  const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function size(){W=c.width=innerWidth;H=c.height=innerHeight;
+    const n=Math.min(70,Math.floor(W*H/22000));
+    P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,s:Math.random()<.35?S[Math.random()*S.length|0]:null,z:12+Math.random()*22}))}
+  function draw(){
+    x.clearRect(0,0,W,H);
+    for(const p of P){
+      if(!still){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+      if(p.s){x.font=p.z+"px Georgia";x.fillStyle="rgba(167,139,250,.2)";x.fillText(p.s,p.x,p.y)}
+      else{x.beginPath();x.arc(p.x,p.y,1.6,0,6.3);x.fillStyle="rgba(34,211,238,.5)";x.fill()}
+    }
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){
+      const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<130){x.strokeStyle="rgba(139,92,246,"+(.14*(1-d/130))+")";x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}
+    }
+    if(!still)requestAnimationFrame(draw)
+  }
+  size();addEventListener("resize",()=>{size();if(still)draw()});draw();
+})();
+</script>
+</body>
+</html>
